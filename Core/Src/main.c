@@ -116,24 +116,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     status = INIT;
-//	uint8_t ADC_value = HAL_ADC_GetValue(&hadc1);
-//	command_flag = 1;
     status1 = RECEIVE_COM;
   while (1)
   {
 	  if(buffer_flag == 1){
-//		  if(buffer[index_buffer-1] == 'T'){
-//		  HAL_UART_Transmit(&huart2 , ( void *) str , sprintf(str, "!ADC=%d#\r\n", ADC_value), 1000);
-//		  }
 		  command_parser_fsm();
-//		  HAL_UART_Transmit(&huart2 , ( void *) str , sprintf(str, "!ADC=%d#\r\n", ADC_value), 1000);
-//		  HAL_Delay(500);
 		  buffer_flag = 0;
 	  }
-//	  if(command_flag == 1){
-//			HAL_UART_Transmit(&huart2 , ( void *) str , sprintf(str, "!ADC=%d#\r\n", ADC_value), 1000);
-//			HAL_Delay(3000);
-//	  }
 	  uart_communication_fsm();
     /* USER CODE END WHILE */
 
