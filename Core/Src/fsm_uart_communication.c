@@ -27,7 +27,7 @@ void uart_communication_fsm(){
 	case Transmit_COM:
 			//send data to console
 			HAL_UART_Transmit(&huart2 , ( void *) str , sprintf(str, "!ADC=%d#\r\n", ADC_value), 1000);
-			setTimer1(1500);
+			setTimer1(3000);
 			status1 = WAIT_FOR_OK;
 		break;
 	case WAIT_FOR_OK:
@@ -36,9 +36,9 @@ void uart_communication_fsm(){
 			status1 =  Transmit_COM;
 		}
 		if(command_flag == 1){
-			status1 = RECEIVE_COM;
 			// set command_flag = 0
 			command_flag = 0;
+			status1 = RECEIVE_COM;
 		}
 		break;
 	default:
